@@ -1,8 +1,28 @@
 .header {
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: 'transparent';
 }
 
 .header__title {
   font-family: 'luckiest-guy';
   font-size: 80px;
+  text-transform: capitalize;
+
+  opacity: .1;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav__option {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  font-family: 'lucida-console';
+  text-transform: capitalize;
 }

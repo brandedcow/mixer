@@ -1,6 +1,5 @@
 .mixer {
-  height: 100vh;
-  width: 100vw;
-
-  background: #FFF9F0;
+  flex: 1;
+  display: grid;
+  grid-template-columns: auto 300px;
 }

@@ -1,0 +1,11 @@
+.palette__pan {
+  z-index: 2;
+
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+
+  border-color: #DADADA;
+  border-width: 8px;
+  border-style: solid;
+}
