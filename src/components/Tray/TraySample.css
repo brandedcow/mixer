@@ -1,1 +1,29 @@
+.tray-sample {
+}
 
+.tray-sample__weight {
+  position: relative;
+
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'lucida-console';
+  font-size: 2rem;
+
+  color: white;
+  opacity: 0;
+
+  transition: opacity 0.15s linear;
+}
+
+.tray-sample__weight:hover {
+  opacity: 1;
+}
+
+.tray-sample__delete-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
