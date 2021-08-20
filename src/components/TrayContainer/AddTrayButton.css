@@ -1,0 +1,64 @@
+.add-tray-button {
+  position: relative;
+
+  display: inline-block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px;
+
+  background: white;
+  border: 1px solid #9B9B9B;
+  border-radius: 30px;
+
+  user-select: none;
+}
+
+.add-tray-button__frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  border: 8px solid #DADADA;
+  border-radius: 30px;
+
+  transition: border 0.15s ease-in-out;
+}
+
+.add-tray-button__frame--hover {
+  border-color: #7a7a7a;
+}
+
+.add-tray-button__plus {
+  z-index: 10;
+
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #EBEBEB;
+  color: #535353;
+
+  font-family: 'lucida-console';
+  border-radius: 30px;
+
+  transition: 
+    color .3s ease-out, 
+    background .3s ease-out, 
+    transform .1s linear;
+}
+
+.add-tray-button__plus--hover {
+  color: #333333;
+  background: #F5F5F5;
+}
+
+.add-tray-button__plus--active {
+  transform: scale(.95);
+}

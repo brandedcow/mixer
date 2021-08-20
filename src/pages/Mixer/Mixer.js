@@ -39,13 +39,11 @@ export default function Mixer() {
     colors[idx].set(none)
   }
 
+  console.log(globalState)
+
   return (
     <div className="mixer">
-      <TrayContainer 
-        colors={colors.get()}
-        onWeightChange={adjustWeight}
-        onDeleteColor={handleDeleteColor}
-      />
+      <TrayContainer />
       <Palette 
         pans={palettes[state.currentPalette.get()]}
         onPanClick={handlePanClick}

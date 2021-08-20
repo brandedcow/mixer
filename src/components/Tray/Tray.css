@@ -1,13 +1,10 @@
 .tray {
   position: relative;
 
-  display: flex;
+  display: inline-block;
   flex-direction: column;
 
   padding: 18px;
-
-  height: 600px;
-  width: 600px;
 
   background: white;
   border: 1px solid #9B9B9B;
@@ -37,6 +34,7 @@
 
   font-family: 'lucida-console';
   font-size: 2.5rem;
+  text-transform: uppercase;
 }
 
 .tray__color--rounded-bottom {

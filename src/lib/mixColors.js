@@ -2,12 +2,13 @@ import mean from './mean'
 import decToHex from './decToHex'
 import parseHexCode from './parseHexCode'
 
-export function mixColors(...colors) {
-  if (colors.length === 1) {
-    return colors[0]
-  } else if (colors.length > 1) {
+export default function mixColors(...colors) {
+  if (colors.length > 1) {
     return colors.reduce(mixTwoWeighted)
+  } else if (colors.length === 1) {
+    return colors[0]
   }
+  return null
 }
 
 function mixTwoWeighted(color1, color2) {

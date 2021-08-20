@@ -1,15 +1,35 @@
+import { useState } from '@hookstate/core'
 import isDarkColor from '../../lib/isDarkColor'
-import { mixColors } from '../../lib/mixColors'
+import mixColors from '../../lib/mixColors'
 import './Tray.css'
 import TraySample from './TraySample'
 
-export default function Tray({ colors, onWeightChange, onDeleteColor }) {
-  const color = mixColors(...colors)?.hex || 'white'
+export default function Tray({
+  style,
+  size, 
+  colors,
+  onSelect,
+}) {
+  const isExpanded = useState(false)
+  const color = mixColors(...colors)?.hex || 'FFFFFF'
 
   const isMixture = colors.length >= 2
 
+  function handleExpandClick() {
+    onSelect()
+    isExpanded.set(!isExpanded.get())
+  }
+
   return (
-    <div className="tray">
+    <div 
+      className="tray"
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+        ...style
+      }}
+      onClick={handleExpandClick}  
+    >
       <div 
         className={`tray__color ${isMixture ? '': 'tray__color--rounded-bottom'}`}
         style={{ 
@@ -29,8 +49,6 @@ export default function Tray({ colors, onWeightChange, onDeleteColor }) {
               idx={idx}
               weight={weight}
               style={{ flex: weight }}
-              onWeightChange={onWeightChange}
-              onDelete={onDeleteColor}
             />
           ))}
         </div>
