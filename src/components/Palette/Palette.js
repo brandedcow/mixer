@@ -1,17 +1,21 @@
 import PalettePan from './PalettePan'
 import './Palette.css'
+import palettes from '../../enum/palettes'
+import { usePaletteState } from '../../state/palette'
 
-export default function Palette({ pans, onPanClick }) {
+export default function Palette() {
+  const paletteState = usePaletteState()
+
+  console.log(paletteState.get())
 
   return (
     <div className="palette">
       <div className="palette__frame">
-        {pans.map(({ hex, name }, idx) => (
+        {palettes[paletteState.get()].map(({ hex, name }, idx) => (
           <PalettePan
             key={`palette-pan-${idx}`}
             name={name}
             hex={hex}
-            onClick={onPanClick}
           />
         ))}
       </div>
