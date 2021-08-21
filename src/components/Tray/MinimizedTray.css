@@ -63,6 +63,21 @@
 
 .mini-tray__samples {
   flex: 1;
+  display: flex;
+  width: 100%;
+  opacity: 0;
 
   transition: all 0.3s linear;
+}
+
+.mini-tray__samples--hover {
+  opacity: 1;
+}
+
+.mini-tray__samples > div:first-child {
+  border-bottom-left-radius: 22px;
+}
+
+.mini-tray__samples > div:last-child {
+  border-bottom-right-radius: 22px;
 }

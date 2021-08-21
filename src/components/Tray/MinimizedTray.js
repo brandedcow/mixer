@@ -34,6 +34,11 @@ export default function MinimizedTray({
     { 'mini-tray__controls--hover': isHovered.get() }
   )
 
+  const samplesClass = classNames(
+    'mini-tray__samples',
+    { 'mini-tray__samples--hover': isHovered.get() }
+  )
+
   const iconSize = '50px'
   const textColor = isDark ? 'white' : 'black'
 
@@ -72,12 +77,14 @@ export default function MinimizedTray({
         >
           {`#${hex}`}
         </div>
-        <div className="mini-tray__samples">
+        <div className={samplesClass}>
           {colors.map((color, idx) => (
             <div
               key={`mini-tray-${trayIdx}-sample-${idx}`}
+              className="mini-tray__pan"
               style={{
-                background: `#${color.hex}`
+                background: `#${color.hex}`,
+                flex: color.weight
               }}
             >
             </div>
