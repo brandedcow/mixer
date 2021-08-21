@@ -1,6 +1,6 @@
 import { none, useState } from '@hookstate/core'
 import Palette from '../../components/Palette/Palette'
-import TrayContainer from '../../components/TrayContainer/TrayContainer'
+import TrayList from '../../components/TrayList/TrayList'
 import palettes from '../../lib/palettes'
 import globalState from '../../state/global'
 import './Mixer.css'
@@ -35,15 +35,9 @@ export default function Mixer() {
     }))
   }
 
-  function handleDeleteColor(idx) {
-    colors[idx].set(none)
-  }
-
-  console.log(globalState)
-
   return (
     <div className="mixer">
-      <TrayContainer />
+      <TrayList />
       <Palette 
         pans={palettes[state.currentPalette.get()]}
         onPanClick={handlePanClick}

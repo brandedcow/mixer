@@ -1,58 +1,47 @@
-import { useState } from '@hookstate/core'
-import isDarkColor from '../../lib/isDarkColor'
+import React from 'react'
 import mixColors from '../../lib/mixColors'
-import './Tray.css'
-import TraySample from './TraySample'
+import MinimizedTray from './MinimizedTray'
+import MaximizedTray from './MaximizedTray'
+import { useCurrentTrayState } from '../../state/currentTray'
 
 export default function Tray({
-  style,
   size, 
+  idx,
   colors,
   onSelect,
+  onDelete,
+  minSize,
+  maxSize,
 }) {
-  const isExpanded = useState(false)
+  const currentTrayState = useCurrentTrayState()
   const color = mixColors(...colors)?.hex || 'FFFFFF'
-
-  const isMixture = colors.length >= 2
 
   function handleExpandClick() {
     onSelect()
-    isExpanded.set(!isExpanded.get())
   }
 
+  function handleSelect() {
+    currentTrayState.set(idx)
+  }
+
+  // const renderedComponent = isExpanded ? MaximizedTray : MinimizedTray
+  const renderedComponent = MinimizedTray
+
+  const isSelected = currentTrayState.get() === idx
+
   return (
-    <div 
-      className="tray"
-      style={{
-        width: `${size}px`,
-        height: `${size}px`,
-        ...style
-      }}
-      onClick={handleExpandClick}  
-    >
-      <div 
-        className={`tray__color ${isMixture ? '': 'tray__color--rounded-bottom'}`}
-        style={{ 
-          background: `#${color}` || "white",
-          color: isDarkColor(color) ? 'white' : 'black'
-        }}
-      >
-        {`#${color}`}
-      </div>
-      {isMixture && (
-        <div className="tray__samples">
-          {colors.map(({ name: colorName, hex, weight}, idx) => (
-            <TraySample
-              key={`tray-color-${idx}`}
-              name={colorName}
-              hex={hex}
-              idx={idx}
-              weight={weight}
-              style={{ flex: weight }}
-            />
-          ))}
-        </div>
-      )}
-    </div>
+    <>
+      {React.createElement(renderedComponent, {
+        hex: color,
+        colors,
+        idx,
+        minSize,
+        maxSize,
+        isSelected,
+        onSelect: handleSelect,
+        onExpand: handleExpandClick,
+        onDelete,
+      })}
+    </>
   )
 }

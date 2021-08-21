@@ -1,14 +1,4 @@
-.tray-container {
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.tray-container__overlay {
+.overlay {
   position: absolute;
   height: 100vh;
   width: 100vw; 
@@ -24,6 +14,6 @@
   transition: display .3s ease-out;
 }
 
-.tray-container__overlay--active {
+.overlay--active {
   display: block;
 }
