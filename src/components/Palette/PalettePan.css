@@ -6,4 +6,14 @@
   border-color: #DADADA;
   border-width: 8px;
   border-style: solid;
+
+  transition: all 0.15s ease-out;
+}
+
+.palette__pan--hover {
+  border-color: #AAAAAA;
+}
+
+.palette__pan--active {
+  transform: scale(0.95);
 }
