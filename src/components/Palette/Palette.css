@@ -1,31 +1,19 @@
 .palette {
-  position: relative;
-
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: auto auto;
-  column-gap: 28px;
-  row-gap: 28px;
-
-  padding: 28px;
-
-  width: 300px;
+  width: 280px;
   
   background: white;
   border: 1px solid #9B9B9B;
   border-radius: 30px;
-
 }
 
-.palette::before {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.palette__frame {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: auto auto;
+  row-gap: 20px;
+  column-gap: 20px;
+
+  padding: 16px;
   border: 8px solid #DADADA;
   border-radius: 30px;
 }

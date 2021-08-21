@@ -1,6 +1,4 @@
 .palette__pan {
-  z-index: 2;
-
   display: inline-block;
   height: 100px;
   width: 100px;
