@@ -35,6 +35,8 @@ export default function Mixer() {
     }))
   }
 
+  console.log(state.trays.get())
+
   return (
     <div className="mixer">
       <TrayList />

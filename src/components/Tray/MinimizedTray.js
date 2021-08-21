@@ -77,7 +77,7 @@ export default function MinimizedTray({
             <div
               key={`mini-tray-${trayIdx}-sample-${idx}`}
               style={{
-                background: `#${color}`
+                background: `#${color.hex}`
               }}
             >
             </div>
