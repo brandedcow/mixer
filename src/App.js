@@ -1,20 +1,29 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
+
 import Header from './components/Header/Header.js';
 import Mixer from './pages/Mixer/Mixer.js'
-import Overlay from './components/Overlay/Overlay.js';
+import Palettes from './pages/Palettes/Palettes'
 import './App.css'
-import { useState } from '@hookstate/core';
 
 function App() {
-  const isOverlayActive = useState(false)
-
   return (
-    <div className="app">
-      <Header title="Mixer" />
-      <Mixer setOverlayFunction/>
-      <Overlay 
-        isActive={isOverlayActive.get()}
-      />
-    </div>
+    <Router>
+      <div className="app">
+        <Header title="Mixer" />
+        <Switch>
+          <Route path="/mixer" exact>
+            <Mixer />
+          </Route>
+          <Route path="/palettes">
+            <Palettes />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
