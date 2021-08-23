@@ -6,8 +6,6 @@ import { usePaletteState } from '../../state/palette'
 export default function Palette() {
   const paletteState = usePaletteState()
 
-  console.log(paletteState.get())
-
   return (
     <div className="palette">
       <div className="palette__frame">
