@@ -6,6 +6,7 @@ import {
 
 import Header from './components/Header/Header.js';
 import Mixer from './pages/Mixer/Mixer.js'
+import Colors from './pages/Colors/Colors.js';
 import Palettes from './pages/Palettes/Palettes'
 import './App.css'
 
@@ -17,6 +18,9 @@ function App() {
         <Switch>
           <Route path="/mixer" exact>
             <Mixer />
+          </Route>
+          <Route path="/colors">
+            <Colors />
           </Route>
           <Route path="/palettes">
             <Palettes />
