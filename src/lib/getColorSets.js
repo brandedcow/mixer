@@ -1,9 +1,9 @@
-import winsorAndNewtonArtist from './colorSets/winsorAndNewtonArtist.json'
+import winsorAndNewtonArtists from './colorSets/winsorAndNewtonArtists.json'
 import winsorAndNewtonCotman from './colorSets/winsorAndNewtonCotman.json'
 
 export default function getColorSets() {
   return {
-    winsorAndNewtonArtist,
+    winsorAndNewtonArtists,
     winsorAndNewtonCotman
   }
 
