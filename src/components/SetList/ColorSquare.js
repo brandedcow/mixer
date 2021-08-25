@@ -1,16 +1,11 @@
-import './ColorSquare.css'
+import "./ColorSquare.css";
 
-export default function ColorSquare({
-  color
-}) {
-
-  console.log(color)
+export default function ColorSquare({ color }) {
   return (
     <div
       style={{
         background: color,
       }}
-    >
-    </div>
-  )
+    ></div>
+  );
 }

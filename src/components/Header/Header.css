@@ -2,15 +2,16 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background: 'transparent';
+  align-items: center;
+  background: "transparent";
 }
 
 .header__title {
-  font-family: 'luckiest-guy';
+  font-family: "luckiest-guy";
   font-size: 80px;
   text-transform: capitalize;
 
-  opacity: .1;
+  opacity: 0.1;
 }
 
 .nav {
@@ -23,6 +24,14 @@
   padding-left: 1rem;
   padding-right: 1rem;
 
-  font-family: 'lucida-console';
+  font-family: "lucida-console";
   text-transform: capitalize;
+}
+
+.header__add-button {
+  padding: 15px 30px;
+
+  border: 1px solid #9b9b9b;
+  border-radius: 30px;
+  background: #ebebeb;
 }
