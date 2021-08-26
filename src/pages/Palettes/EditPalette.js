@@ -16,12 +16,13 @@ export default function EditPalette() {
   const options = colorSets.getOptions();
 
   return (
-    <div>
+    <div className="edit-palette">
       <div className="edit-palette__options-container">
         <Input
           value={paletteName.get()}
           onChange={(v) => paletteName.set(v)}
           placeholder="Palette Name"
+          size="2.5rem"
         />
         <Slider
           label="# Wells"
