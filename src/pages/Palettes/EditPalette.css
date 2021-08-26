@@ -10,3 +10,7 @@
   display: flex;
   align-items: center;
 }
+
+.edit-palette__color-picker {
+  width: 100%;
+}

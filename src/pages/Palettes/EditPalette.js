@@ -3,17 +3,25 @@ import { useColorSets } from "../../state/useColorSets";
 import Input from "../../components/Input/Input";
 import Palette from "../../components/Palette/Palette";
 import Slider from "../../components/Slider/Slider";
-import Dropdown from "../../components/Dropdown/Dropdown.js";
+import Dropdown from "../../components/Dropdown/Dropdown";
+import ColorList from "../../components/ColorList/ColorList";
 import "./EditPalette.css";
 
 export default function EditPalette() {
   const numPans = useState(12);
   const paletteName = useState("");
   const selectedPan = useState(-1);
-  const selectedSet = useState(null);
+  const selectedSet = useState({});
 
   const colorSets = useColorSets();
   const options = colorSets.getOptions();
+
+  const selectedColorSet =
+    selectedSet.get().value !== undefined
+      ? colorSets.get(selectedSet.get().value)
+      : [];
+
+  function handleColorClick() {}
 
   return (
     <div className="edit-palette">
@@ -36,11 +44,13 @@ export default function EditPalette() {
         <button>Save</button>
       </div>
       <Palette pans={numPans.get()} colors={[]} />
-      <div>
+      <div className="edit-palette__color-picker">
         <Dropdown onChange={(v) => selectedSet.set(v)} options={options} />
-        {/* <ColorList 
-          colors={colorSets.get(selectedPan)}
-        /> */}
+        <ColorList
+          colors={selectedColorSet}
+          onColorClick={handleColorClick}
+          squareSize="150px"
+        />
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ const wrapState = (s) => ({
   getOptions: () =>
     Object.keys(s.colors.value).map((label, value) => ({
       label: camelToTitle(label),
-      value,
+      value: label,
     })),
 });
 

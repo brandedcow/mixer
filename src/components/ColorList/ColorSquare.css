@@ -1,0 +1,8 @@
+.color-square__label {
+  opacity: 0;
+  transition: all 0.2s ease-out;
+}
+
+.color-square__label--hover {
+  opacity: 1;
+}

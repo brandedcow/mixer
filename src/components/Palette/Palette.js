@@ -22,7 +22,11 @@ export default function Palette({ colors, pans, vertical = false }) {
         }}
       >
         {new Array(pans).fill(null).map((color, idx) => (
-          <PalettePan hex={colors[idx]} onClick={handlePanClick} />
+          <PalettePan
+            key={`palette-pan-${idx}`}
+            hex={colors[idx]}
+            onClick={handlePanClick}
+          />
         ))}
       </div>
     </div>
