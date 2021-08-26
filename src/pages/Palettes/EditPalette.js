@@ -23,6 +23,7 @@ export default function EditPalette() {
   const paletteColors = useState(new Array(numPans.get()).fill(null));
 
   function handleColorClick(color) {
+    if (selectedPan.get() === -1) return;
     const order = selectedPan.get();
 
     paletteColors[order].merge({
