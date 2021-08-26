@@ -1,8 +1,9 @@
 .palette {
-  width: 280px;
+  display: inline-block;
+  /* width: 280px; */
 
   background: white;
-  border: 1px solid #9B9B9B;
+  border: 1px solid #9b9b9b;
   border-radius: 30px;
 }
 
@@ -14,6 +15,9 @@
   column-gap: 20px;
 
   padding: 16px;
-  border: 8px solid #DADADA;
+  border: 8px solid #dadada;
   border-radius: 30px;
+}
+
+.palette__frame--vertical {
 }

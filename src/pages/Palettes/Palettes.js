@@ -1,9 +1,10 @@
-import './Palettes.css'
+import EditPalette from "./EditPalette";
+import "./Palettes.css";
 
-export default function Palette() {
+export default function Palettes() {
   return (
     <div>
-      Palette
+      <EditPalette />
     </div>
-  )
+  );
 }

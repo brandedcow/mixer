@@ -1,0 +1,12 @@
+.slider {
+  display: flex;
+  flex-direction: row;
+}
+
+.slider__value {
+  font-family: "lucida-console";
+
+  background: #e5e5e5;
+  padding: 10px 15px;
+  border-radius: 7px;
+}

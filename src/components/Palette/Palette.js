@@ -1,16 +1,28 @@
+import { useState } from "@hookstate/core";
 import PalettePan from "./PalettePan";
 import "./Palette.css";
-import { usePaletteState } from "../../state/palette";
 
-export default function Palette() {
-  const paletteState = usePaletteState();
-  const { name, colors } = paletteState.get();
+export default function Palette({ colors, pans, vertical = false }) {
+  const selectedPan = useState(-1);
+
+  const columns = vertical ? 2 : pans / 2;
+
+  const gridTemplateColumns = new Array(columns).fill("auto").join(" ");
+
+  function handlePanClick() {
+    console.log("clicked");
+  }
 
   return (
     <div className="palette">
-      <div className="palette__frame">
-        {colors.map(({ hex, name }, idx) => (
-          <PalettePan key={`palette-pan-${idx}`} name={name} hex={hex} />
+      <div
+        className="palette__frame"
+        style={{
+          gridTemplateColumns,
+        }}
+      >
+        {new Array(pans).fill(null).map((color, idx) => (
+          <PalettePan hex={colors[idx]} onClick={handlePanClick} />
         ))}
       </div>
     </div>
