@@ -1,12 +1,10 @@
 import { useState } from "@hookstate/core";
 import classNames from "classnames";
 import "./PalettePan.css";
-import { useCurrentTrayState } from "../../state/currentTray";
 
-export default function PalettePan({ name, hex, onClick }) {
+export default function PalettePan({ name, hex, onClick, style }) {
   const isHovered = useState(false);
   const isActive = useState(false);
-  const currentTrayState = useCurrentTrayState();
 
   const panClassNames = classNames(
     "palette__pan",
@@ -17,7 +15,7 @@ export default function PalettePan({ name, hex, onClick }) {
   return (
     <div
       className={panClassNames}
-      style={{ background: `#${hex}` }}
+      style={{ background: `#${hex}`, ...style }}
       onMouseEnter={() => isHovered.set(true)}
       onMouseLeave={() => {
         isHovered.set(false);

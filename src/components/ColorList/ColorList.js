@@ -3,12 +3,11 @@ import "./ColorList.css";
 
 export default function ColorList({ colors, onColorClick, squareSize }) {
   function handleColorClick(color) {
-    console.log(color);
-    // onColorClick(color);
+    onColorClick(color);
   }
 
   return (
-    <div>
+    <div className="color-list">
       {colors.map((color, idx) => (
         <ColorSquare
           key={`color-list-square-${idx}`}

@@ -1,6 +1,14 @@
 import "./Slider.css";
 
-export default function Slider({ min, max, step, value, onChange, label }) {
+export default function Slider({
+  min,
+  max,
+  step,
+  value,
+  onChange,
+  onDrop,
+  label,
+}) {
   function handleChange(e) {
     onChange(+e.target.value);
   }
@@ -16,6 +24,7 @@ export default function Slider({ min, max, step, value, onChange, label }) {
         step={step}
         value={value}
         onChange={handleChange}
+        onMouseUp={onDrop}
       />
       <div className="slider__value">{value}</div>
     </div>
