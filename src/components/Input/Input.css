@@ -1,0 +1,21 @@
+.input__container {
+  display: flex;
+  align-items: center;
+}
+
+.input__field {
+  padding: 0.75rem 1.5rem;
+
+  width: 100%;
+
+  font-size: 3rem;
+  font-family: "lucida-console";
+
+  border: none;
+
+  background: none;
+}
+
+.input__field::placeholder {
+  color: #c4c4c4;
+}
