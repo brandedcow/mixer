@@ -15,35 +15,28 @@ export default function EditPalette() {
   const colorSets = useColorSets();
   const options = colorSets.getOptions();
 
-  function handleInputChange(value) {
-    paletteName.set(value);
-  }
-  function handleSliderChange(e) {
-    numPans.set(+e.target.value);
-  }
-  function handleSelectSet(option) {
-    selectedSet.set(option);
-  }
-
   return (
     <div>
       <div className="edit-palette__options-container">
         <Input
           value={paletteName.get()}
-          onChange={handleInputChange}
+          onChange={(v) => paletteName.set(v)}
           placeholder="Palette Name"
         />
         <Slider
+          label="# Wells"
           min={6}
           max={24}
           step={2}
           value={numPans.get()}
-          onChange={handleSliderChange}
+          onChange={(v) => numPans.set(v)}
         />
+        <button>Clear</button>
+        <button>Save</button>
       </div>
       <Palette pans={numPans.get()} colors={[]} />
       <div>
-        <Dropdown onChange={handleSelectSet} options={options} />
+        <Dropdown onChange={(v) => selectedSet.set(v)} options={options} />
         {/* <ColorList 
           colors={colorSets.get(selectedPan)}
         /> */}

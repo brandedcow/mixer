@@ -1,6 +1,7 @@
 .slider {
+  width: 100%;
   display: flex;
-  flex-direction: row;
+  align-items: center;
 }
 
 .slider__value {
@@ -9,4 +10,13 @@
   background: #e5e5e5;
   padding: 10px 15px;
   border-radius: 7px;
+}
+
+.slider__label {
+  font-family: "lucida-console";
+}
+
+.slider__input {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
