@@ -1,6 +1,8 @@
 .color-square__label {
   opacity: 0;
   transition: all 0.2s ease-out;
+
+  font-family: "lucida-console";
 }
 
 .color-square__label--hover {

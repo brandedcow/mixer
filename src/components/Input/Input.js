@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { ReactComponent as EditIcon } from "../../assets/icons/noun_edit_1954019.svg";
 import "./Input.css";
 
-export default function Input({ value, onChange, placeholder, size }) {
+export default function Input({ value, onChange, placeholder, size, style }) {
   const inputEl = useRef(null);
 
   function handleEditClick() {
@@ -14,7 +14,7 @@ export default function Input({ value, onChange, placeholder, size }) {
   }
 
   return (
-    <div className="input__container">
+    <div className="input__container" style={{ ...style }}>
       <EditIcon
         height={size || "3rem"}
         width={size || "3rem"}

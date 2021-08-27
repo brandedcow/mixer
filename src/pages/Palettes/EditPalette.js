@@ -39,7 +39,7 @@ export default function EditPalette() {
     if (diff > 0) {
       paletteColors.merge(new Array(diff).fill(null));
     } else {
-      paletteColors.set(paletteColors.get().slice(0, numPans.get()));
+      paletteColors.set((p) => p.slice(0, numPans.get()));
     }
   }
 
@@ -51,6 +51,9 @@ export default function EditPalette() {
           onChange={(v) => paletteName.set(v)}
           placeholder="Palette Name"
           size="2.5rem"
+          style={{
+            flex: 1,
+          }}
         />
         <Slider
           label="# Wells"
