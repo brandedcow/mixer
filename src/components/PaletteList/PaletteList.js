@@ -1,9 +1,5 @@
-import './PaletteList.css'
+import "./PaletteList.css";
 
 export default function PaletteList() {
-  return (
-    <div>
-      {}
-    </div>
-  )
+  return <div>Palette List</div>;
 }

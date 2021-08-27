@@ -2,11 +2,15 @@ import { useState } from "@hookstate/core";
 import { useHistory } from "react-router-dom";
 import pageEnum from "../../enum/pages";
 import globalState from "../../state/global";
+import useHeaderButton from "../../state/useHeaderButton";
 import "./Header.css";
 
 export default function Header() {
   const state = useState(globalState);
   const history = useHistory();
+
+  const { isButtonVisible, buttonLabel, buttonFunction } =
+    useHeaderButton().get();
 
   function handleLinkClick(e) {
     const path = e.target.getAttribute("path");
@@ -15,14 +19,12 @@ export default function Header() {
     history.push(path);
   }
 
-  function handleAddPalette() {}
-
   return (
     <div className="header">
       <h1 className="header__title">{pageEnum[state.currentPage.get()]}</h1>
-      {state.currentPage.value === 2 && (
-        <div className="header__add-palette-button" onClick={handleAddPalette}>
-          New Palette
+      {isButtonVisible && (
+        <div className="header__action-button" onClick={buttonFunction}>
+          {buttonLabel}
         </div>
       )}
       <nav className="nav">

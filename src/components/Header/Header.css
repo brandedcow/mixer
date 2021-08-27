@@ -28,10 +28,12 @@
   text-transform: capitalize;
 }
 
-.header__add-button {
+.header__action-button {
   padding: 15px 30px;
 
   border: 1px solid #9b9b9b;
   border-radius: 30px;
   background: #ebebeb;
+
+  font-family: "lucida-console";
 }
