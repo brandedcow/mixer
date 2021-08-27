@@ -8,16 +8,19 @@ import "./Header.css";
 export default function Header() {
   const state = useState(globalState);
   const history = useHistory();
+  const button = useHeaderButton();
 
-  const { isButtonVisible, buttonLabel, buttonFunction } =
-    useHeaderButton().get();
+  const { isButtonVisible, buttonLabel, buttonFunction } = button.get();
 
   function handleLinkClick(e) {
     const path = e.target.getAttribute("path");
     const idx = e.target.getAttribute("idx");
+
     state.currentPage.set(+idx);
-    history.push(path);
+    history.push(`/${path}`);
   }
+
+  // console.log("header render", history);
 
   return (
     <div className="header">

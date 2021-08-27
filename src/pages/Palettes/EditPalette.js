@@ -6,8 +6,25 @@ import Slider from "../../components/Slider/Slider";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import ColorList from "../../components/ColorList/ColorList";
 import "./EditPalette.css";
+import useHeaderButton from "../../state/useHeaderButton";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function EditPalette() {
+  const headerButton = useHeaderButton();
+  const history = useHistory();
+
+  useEffect(() => {
+    console.log("called edit effect");
+    headerButton.set({
+      visible: true,
+      label: "X Cancel Add",
+      func: () => history.push("/palettes"),
+    });
+
+    return headerButton.reset;
+  });
+
   const colorSets = useColorSets();
   const options = colorSets.getOptions();
   const numPans = useState(12);

@@ -1,26 +1,25 @@
 import EditPalette from "./EditPalette";
 import PaletteList from "../../components/PaletteList/PaletteList";
-import useCurrentPage from "../../state/useCurrentPage";
 import "./Palettes.css";
-import { useEffect } from "react";
-import useHeaderButton from "../../state/useHeaderButton";
+import usePaletteState from "../../state/usePaletteState";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 
 export default function Palettes() {
-  const headerButton = useHeaderButton();
+  const { path, url } = useRouteMatch();
+  const palettes = usePaletteState();
 
-  useEffect(() => {
-    headerButton.setButtonLabel("Add Palette");
-    headerButton.setButtonFunction(handleAddPalette);
-    headerButton.showButton();
-
-    return headerButton.reset;
-  });
-
-  function handleAddPalette() {}
-
-  const currentPage = useCurrentPage();
+  const handleAddPalette = () => {};
 
   return (
-    <div>{currentPage.get() === 2 ? <PaletteList /> : <EditPalette />}</div>
+    <div>
+      <Switch>
+        <Route exact path={path}>
+          <PaletteList palettes={palettes.getList()} />
+        </Route>
+        <Route path={`${path}/edit`}>
+          <EditPalette onAdd={handleAddPalette} />
+        </Route>
+      </Switch>
+    </div>
   );
 }
