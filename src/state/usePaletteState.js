@@ -4,7 +4,9 @@ import globalState from "./global";
 
 const wrapState = (s) => ({
   getList: () => s.palettes.value,
+  getCurrent: () => s.currentPalette.value,
   add: (palette) => s.palettes.merge([palette]),
+  select: (idx) => s.currentPalette.set(idx),
 });
 
 const usePaletteState = () => wrapState(useState(globalState));

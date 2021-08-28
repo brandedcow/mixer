@@ -4,7 +4,7 @@ import useHeaderButton from "../../state/useHeaderButton";
 import PaletteCard from "./PaletteCard";
 import "./PaletteList.css";
 
-export default function PaletteList({ palettes }) {
+export default function PaletteList({ palettes, selectedPalette, onSelect }) {
   const headerButton = useHeaderButton();
   const history = useHistory();
   const { url } = useRouteMatch();
@@ -26,6 +26,10 @@ export default function PaletteList({ palettes }) {
           key={`${name}-palette-card-${idx}`}
           name={name}
           colors={colors}
+          style={{
+            border: selectedPalette === idx ? ".25rem solid black" : "none",
+          }}
+          onClick={() => onSelect(idx)}
         />
       ))}
     </div>

@@ -14,7 +14,11 @@ export default function Palettes() {
     <div>
       <Switch>
         <Route exact path={path}>
-          <PaletteList palettes={palettes.getList()} />
+          <PaletteList
+            palettes={palettes.getList()}
+            selectedPalette={palettes.getCurrent()}
+            onSelect={palettes.select}
+          />
         </Route>
         <Route path={`${path}/edit`}>
           <EditPalette onAdd={palettes.add} />
