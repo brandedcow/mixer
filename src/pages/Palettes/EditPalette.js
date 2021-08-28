@@ -72,6 +72,7 @@ export default function EditPalette({ onAdd }) {
       colors: paletteColors.get(),
     };
     onAdd(palette);
+    history.goBack();
   }
 
   return (

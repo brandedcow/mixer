@@ -1,0 +1,21 @@
+.palette-card {
+  display: flex;
+  flex-direction: column;
+
+  background: lightgrey;
+  border-radius: 8px;
+
+  width: 100%;
+  padding: 2rem;
+}
+
+.palette-card__name {
+  font-size: 1.5rem;
+  font-family: "lucida-console";
+  padding-bottom: 1rem;
+}
+
+.palette-card__color-list {
+  display: flex;
+  height: 100px;
+}
