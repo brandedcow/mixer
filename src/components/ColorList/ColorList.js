@@ -1,7 +1,11 @@
 import ColorSquare from "./ColorSquare";
 import "./ColorList.css";
 
-export default function ColorList({ colors, onColorClick, squareSize }) {
+export default function ColorList({
+  colors,
+  onColorClick = () => {},
+  squareSize,
+}) {
   function handleColorClick(color) {
     onColorClick(color);
   }

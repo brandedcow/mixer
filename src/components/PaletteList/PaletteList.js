@@ -6,7 +6,7 @@ import "./PaletteList.css";
 export default function PaletteList() {
   const headerButton = useHeaderButton();
   const history = useHistory();
-  const { path, url } = useRouteMatch();
+  const { url } = useRouteMatch();
 
   useEffect(() => {
     headerButton.set({

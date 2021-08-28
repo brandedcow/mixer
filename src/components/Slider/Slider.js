@@ -7,15 +7,14 @@ export default function Slider({
   value,
   onChange,
   onDrop,
-  label,
+  style,
 }) {
   function handleChange(e) {
     onChange(+e.target.value);
   }
 
   return (
-    <div className="slider">
-      <label className="slider__label">{label}</label>
+    <div className="slider" style={{ ...style }}>
       <input
         className="slider__input"
         type="range"

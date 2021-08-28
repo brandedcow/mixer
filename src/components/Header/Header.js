@@ -15,12 +15,9 @@ export default function Header() {
   function handleLinkClick(e) {
     const path = e.target.getAttribute("path");
     const idx = e.target.getAttribute("idx");
-
     state.currentPage.set(+idx);
     history.push(`/${path}`);
   }
-
-  // console.log("header render", history);
 
   return (
     <div className="header">

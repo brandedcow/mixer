@@ -10,12 +10,11 @@ import useHeaderButton from "../../state/useHeaderButton";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-export default function EditPalette() {
+export default function EditPalette({ onAdd }) {
   const headerButton = useHeaderButton();
   const history = useHistory();
 
   useEffect(() => {
-    console.log("called edit effect");
     headerButton.set({
       visible: true,
       label: "X Cancel Add",
@@ -60,42 +59,56 @@ export default function EditPalette() {
     }
   }
 
+  function handleClear() {
+    paletteColors.set(new Array(numPans.get()).fill(null));
+  }
+
+  function handleSave() {
+    onAdd();
+  }
+
   return (
     <div className="edit-palette">
-      <div className="edit-palette__options-container">
-        <Input
-          value={paletteName.get()}
-          onChange={(v) => paletteName.set(v)}
-          placeholder="Palette Name"
-          size="2.5rem"
-          style={{
-            flex: 1,
-          }}
-        />
-        <Slider
-          label="# Wells"
-          min={6}
-          max={24}
-          step={2}
-          value={numPans.get()}
-          onChange={(v) => numPans.set(v)}
-          onDrop={handleSliderDrop}
-        />
-        <button>Clear</button>
-        <button>Save</button>
+      <div className="edit-palette__panel">
+        <Input placeholder="Palette Name" />
+        <div className="edit-palette__panel-section">
+          <div className="edit-palette__palette">
+            <Palette
+              colors={paletteColors.get()}
+              vertical
+              onPanClick={(v) => selectedPan.set(v)}
+              selectedPan={selectedPan.get()}
+            />
+          </div>
+          <div className="edit-palette__options-container">
+            <label className="edit-palette__label"># Wells</label>
+            <Slider
+              min={6}
+              max={24}
+              step={2}
+              value={numPans.get()}
+              onChange={(v) => numPans.set(v)}
+              onDrop={handleSliderDrop}
+            />
+            <div className="edit-palette__color-options">
+              <Dropdown
+                options={options}
+                onChange={(v) => selectedSet.set(v)}
+              />
+            </div>
+            <div className="edit-palette__button-container">
+              <button className="edit-palette__button" onClick={handleClear}>
+                Clear
+              </button>
+              <button className="edit-palette__button" onClick={handleSave}>
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <Palette
-        colors={paletteColors.get()}
-        onPanClick={(v) => selectedPan.set(v)}
-        selectedPan={selectedPan.get()}
-      />
-      <div className="edit-palette__color-picker">
-        <Dropdown onChange={(v) => selectedSet.set(v)} options={options} />
-        <ColorList
-          colors={selectedColorSet}
-          onColorClick={handleColorClick}
-          squareSize="150px"
-        />
+      <div className="edit-palette__panel">
+        <ColorList colors={selectedColorSet} onColorClick={handleColorClick} />
       </div>
     </div>
   );

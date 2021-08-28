@@ -1,11 +1,10 @@
-import React from 'react'
-import mixColors from '../../lib/mixColors'
-import MinimizedTray from './MinimizedTray'
-import MaximizedTray from './MaximizedTray'
-import { useCurrentTrayState } from '../../state/currentTray'
+import React from "react";
+import mixColors from "../../lib/mixColors";
+import MinimizedTray from "./MinimizedTray";
+import { useCurrentTrayState } from "../../state/currentTray";
 
 export default function Tray({
-  size, 
+  size,
   idx,
   colors,
   onSelect,
@@ -13,21 +12,21 @@ export default function Tray({
   minSize,
   maxSize,
 }) {
-  const currentTrayState = useCurrentTrayState()
-  const color = mixColors(...colors)?.hex || 'FFFFFF'
+  const currentTrayState = useCurrentTrayState();
+  const color = mixColors(...colors)?.hex || "FFFFFF";
 
   function handleExpandClick() {
-    onSelect()
+    onSelect();
   }
 
   function handleSelect() {
-    currentTrayState.set(idx)
+    currentTrayState.set(idx);
   }
 
   // const renderedComponent = isExpanded ? MaximizedTray : MinimizedTray
-  const renderedComponent = MinimizedTray
+  const renderedComponent = MinimizedTray;
 
-  const isSelected = currentTrayState.get() === idx
+  const isSelected = currentTrayState.get() === idx;
 
   return (
     <>
@@ -43,5 +42,5 @@ export default function Tray({
         onDelete,
       })}
     </>
-  )
+  );
 }

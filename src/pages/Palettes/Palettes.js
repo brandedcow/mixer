@@ -5,10 +5,12 @@ import usePaletteState from "../../state/usePaletteState";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 
 export default function Palettes() {
-  const { path, url } = useRouteMatch();
+  const { path } = useRouteMatch();
   const palettes = usePaletteState();
 
-  const handleAddPalette = () => {};
+  const handleAddPalette = () => {
+    console.log("handle add palette");
+  };
 
   return (
     <div>
