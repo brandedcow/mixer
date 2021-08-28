@@ -8,9 +8,7 @@ export default function Palettes() {
   const { path } = useRouteMatch();
   const palettes = usePaletteState();
 
-  const handleAddPalette = () => {
-    console.log("handle add palette");
-  };
+  console.log(palettes.getList());
 
   return (
     <div>
@@ -19,7 +17,7 @@ export default function Palettes() {
           <PaletteList palettes={palettes.getList()} />
         </Route>
         <Route path={`${path}/edit`}>
-          <EditPalette onAdd={handleAddPalette} />
+          <EditPalette onAdd={palettes.add} />
         </Route>
       </Switch>
     </div>

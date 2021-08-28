@@ -10,7 +10,9 @@ export default function Input({ value, onChange, placeholder, size, style }) {
   }
 
   function handleChange(e) {
-    onChange(e.target.value);
+    if (onChange) {
+      onChange(e.target.value);
+    }
   }
 
   return (

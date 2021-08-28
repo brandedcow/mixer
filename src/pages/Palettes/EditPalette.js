@@ -64,13 +64,24 @@ export default function EditPalette({ onAdd }) {
   }
 
   function handleSave() {
-    onAdd();
+    // TODO: Add VALIDATION
+    if (paletteName === "") return;
+
+    const palette = {
+      name: paletteName.get(),
+      colors: paletteColors.get(),
+    };
+    onAdd(palette);
   }
 
   return (
     <div className="edit-palette">
       <div className="edit-palette__panel">
-        <Input placeholder="Palette Name" />
+        <Input
+          placeholder="Palette Name"
+          onChange={(v) => paletteName.set(v)}
+          size="2rem"
+        />
         <div className="edit-palette__panel-section">
           <div className="edit-palette__palette">
             <Palette
