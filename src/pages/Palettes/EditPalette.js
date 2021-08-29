@@ -45,6 +45,7 @@ export default function EditPalette({ onAdd }) {
     paletteColors[order].merge({
       ...color,
       order,
+      weight: 1,
     });
   }
 

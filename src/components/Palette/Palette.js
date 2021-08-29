@@ -23,7 +23,7 @@ export default function Palette({
           <PalettePan
             key={`palette-pan-${idx}`}
             hex={colors[idx] === null ? "white" : colors[idx].hex}
-            onClick={() => onPanClick(idx)}
+            onClick={() => onPanClick(idx, color)}
             style={{
               borderColor: selectedPan === idx ? "#AAAAAA" : "#DADADA",
             }}

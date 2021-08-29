@@ -8,8 +8,6 @@ export default function Palettes() {
   const { path } = useRouteMatch();
   const palettes = usePaletteState();
 
-  console.log(palettes.getList());
-
   return (
     <div>
       <Switch>
