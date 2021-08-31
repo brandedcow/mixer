@@ -8,35 +8,32 @@ import ColorList from "../../components/ColorList/ColorList";
 import "./EditPalette.css";
 import useHeaderButton from "../../state/useHeaderButton";
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import usePaletteState from "../../state/usePaletteState";
 
 export default function EditPalette({ onAdd }) {
   const headerButton = useHeaderButton();
   const history = useHistory();
-
-  useEffect(() => {
-    headerButton.set({
-      visible: true,
-      label: "X Cancel Add",
-      func: () => history.push("/palettes"),
-    });
-
-    return headerButton.reset;
-  });
+  const palettes = usePaletteState();
+  const { id } = useParams();
+  const paletteToEdit = palettes.getPalette(id);
 
   const colorSets = useColorSets();
   const options = colorSets.getOptions();
   const numPans = useState(12);
-  const paletteName = useState("");
+  const paletteName = useState(id !== "new" ? paletteToEdit.name : "");
   const selectedPan = useState(-1);
   const selectedSet = useState(options[0]);
+  const paletteColors = useState(
+    id !== "new"
+      ? paletteToEdit.colors.map((color) => ({ ...color }))
+      : new Array(numPans.get()).fill(null)
+  );
 
   const selectedColorSet =
     selectedSet.get().value !== undefined
       ? colorSets.get(selectedSet.get().value)
       : [];
-
-  const paletteColors = useState(new Array(numPans.get()).fill(null));
 
   function handleColorClick(color) {
     if (selectedPan.get() === -1) return;
@@ -76,10 +73,22 @@ export default function EditPalette({ onAdd }) {
     history.goBack();
   }
 
+  useEffect(() => {
+    // set header button
+    headerButton.set({
+      visible: true,
+      label: "X Cancel Add",
+      func: () => history.push("/palettes"),
+    });
+
+    return headerButton.reset;
+  });
+
   return (
     <div className="edit-palette">
       <div className="edit-palette__panel">
         <Input
+          value={paletteName.get()}
           placeholder="Palette Name"
           onChange={(v) => paletteName.set(v)}
           size="2rem"

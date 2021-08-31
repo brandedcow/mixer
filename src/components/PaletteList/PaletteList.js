@@ -13,23 +13,28 @@ export default function PaletteList({ palettes, selectedPalette, onSelect }) {
     headerButton.set({
       visible: true,
       label: "+ Add Palette",
-      func: () => history.push(`${url}/edit`),
+      func: () => history.push(`${url}/edit/new`),
     });
 
     return headerButton.reset;
   });
 
+  function handleEditPalette(idx) {
+    history.push(`${url}/edit/${idx}`);
+  }
+
   return (
     <div className="palette-list">
-      {palettes.map(({ name, colors }, idx) => (
+      {palettes.map((palette, idx) => (
         <PaletteCard
-          key={`${name}-palette-card-${idx}`}
-          name={name}
-          colors={colors}
+          key={`${palette.name}-palette-card-${idx}`}
+          name={palette.name}
+          colors={palette.colors}
           style={{
             border: selectedPalette === idx ? ".25rem solid black" : "none",
           }}
           onClick={() => onSelect(idx)}
+          onEdit={() => handleEditPalette(idx)}
         />
       ))}
     </div>

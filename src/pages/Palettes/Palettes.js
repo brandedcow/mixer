@@ -18,7 +18,7 @@ export default function Palettes() {
             onSelect={palettes.select}
           />
         </Route>
-        <Route path={`${path}/edit`}>
+        <Route path={`${path}/edit/:id`}>
           <EditPalette onAdd={palettes.add} />
         </Route>
       </Switch>

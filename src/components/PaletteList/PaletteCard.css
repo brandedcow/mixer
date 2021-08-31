@@ -9,10 +9,20 @@
   padding: 2rem;
 }
 
+.palette-card__info {
+  display: flex;
+  justify-content: space-between;
+}
+
 .palette-card__name {
   font-size: 1.5rem;
   font-family: "lucida-console";
   padding-bottom: 1rem;
+}
+
+.palette-card__options {
+  font-family: "lucida-console";
+  font-size: 1.3rem;
 }
 
 .palette-card__color-list {
