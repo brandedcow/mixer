@@ -7,6 +7,11 @@
 
   width: 100%;
   padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.palette-card:last-child {
+  margin: 0;
 }
 
 .palette-card__info {
@@ -21,8 +26,15 @@
 }
 
 .palette-card__options {
+  display: flex;
+
   font-family: "lucida-console";
   font-size: 1.3rem;
+}
+
+.palette-card__button {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .palette-card__color-list {

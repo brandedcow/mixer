@@ -4,7 +4,12 @@ import useHeaderButton from "../../state/useHeaderButton";
 import PaletteCard from "./PaletteCard";
 import "./PaletteList.css";
 
-export default function PaletteList({ palettes, selectedPalette, onSelect }) {
+export default function PaletteList({
+  palettes,
+  selectedPalette,
+  onSelect,
+  onDelete,
+}) {
   const headerButton = useHeaderButton();
   const history = useHistory();
   const { url } = useRouteMatch();
@@ -35,6 +40,7 @@ export default function PaletteList({ palettes, selectedPalette, onSelect }) {
           }}
           onClick={() => onSelect(idx)}
           onEdit={() => handleEditPalette(idx)}
+          onDelete={() => onDelete(idx)}
         />
       ))}
     </div>

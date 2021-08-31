@@ -16,6 +16,7 @@ export default function Palettes() {
             palettes={palettes.getList()}
             selectedPalette={palettes.getCurrent()}
             onSelect={palettes.select}
+            onDelete={palettes.remove}
           />
         </Route>
         <Route path={`${path}/edit/:id`}>

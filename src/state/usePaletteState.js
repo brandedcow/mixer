@@ -1,4 +1,4 @@
-import { useState } from "@hookstate/core";
+import { none, useState } from "@hookstate/core";
 
 import globalState from "./global";
 
@@ -9,6 +9,7 @@ const wrapState = (s) => ({
   getCurrentPalette: () => s.palettes.value[s.currentPalette.value],
   add: (palette) => s.palettes.merge([palette]),
   select: (idx) => s.currentPalette.set(idx),
+  remove: (idx) => s.palettes[idx].set(none),
 });
 
 const usePaletteState = () => wrapState(useState(globalState));
