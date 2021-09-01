@@ -7,13 +7,16 @@ export default function PaletteCard({
   onClick,
   onEdit,
   onDelete,
+  onChart,
 }) {
-  console.log(colors);
   return (
     <div className="palette-card" style={{ ...style }} onClick={onClick}>
       <div className="palette-card__info">
         <div className="palette-card__name">{name}</div>
         <div className="palette-card__options">
+          <div className="palette-card__button" onClick={onChart}>
+            Chart
+          </div>
           <div className="palette-card__button" onClick={onEdit}>
             Edit
           </div>

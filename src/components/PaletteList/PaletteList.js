@@ -28,6 +28,10 @@ export default function PaletteList({
     history.push(`${url}/edit/${idx}`);
   }
 
+  function handleChartPalette(idx) {
+    history.push(`${url}/chart/${idx}`);
+  }
+
   return (
     <div className="palette-list">
       {palettes.map((palette, idx) => (
@@ -41,6 +45,7 @@ export default function PaletteList({
           onClick={() => onSelect(idx)}
           onEdit={() => handleEditPalette(idx)}
           onDelete={() => onDelete(idx)}
+          onChart={() => handleChartPalette(idx)}
         />
       ))}
     </div>
