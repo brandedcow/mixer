@@ -1,30 +1,24 @@
-import ColorSquare from './ColorSquare'
+import ColorSquare from "./ColorSquare";
 
-import './SetCard.css'
+import "./SetCard.css";
 
-export default function SetCard({
-  name,
-  colors
-}) {
-  const gridTemplateColumns = new Array(10).fill('auto').join(' ')
+export default function SetCard({ name, colors }) {
+  const gridTemplateColumns = new Array(15).fill("auto").join(" ");
 
   return (
-    <div>
+    <div className="set-card">
       <div className="set-card__name">{name}</div>
-      <div 
+      <div
         style={{
-          display: 'grid',
+          display: "grid",
           gridTemplateColumns,
-          gridAutoRows: '150px'
+          gridAutoRows: "50px",
         }}
       >
         {colors.map(({ name, hex }, idx) => (
-          <ColorSquare 
-            key={`${name}-square-${idx}`}
-            color={`#${hex}`}
-          />
+          <ColorSquare key={`${name}-square-${idx}`} color={`#${hex}`} />
         ))}
       </div>
     </div>
-  )
+  );
 }

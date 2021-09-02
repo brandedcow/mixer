@@ -1,5 +1,17 @@
+.set-card {
+  display: flex;
+  flex-direction: column;
+
+  background: lightgrey;
+  border-radius: 8px;
+
+  max-height: 500px;
+  width: 100%;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
 .set-card__name {
-  font-family: 'lucida-console';
+  font-family: "lucida-console";
   font-size: 1.5rem;
-  
 }
