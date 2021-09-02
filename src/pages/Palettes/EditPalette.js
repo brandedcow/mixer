@@ -17,24 +17,20 @@ export default function EditPalette({ onAdd }) {
   const palettes = usePaletteState();
   const { id } = useParams();
   const paletteToEdit = palettes.getPalette(id);
+  const colorSets = useColorSets();
 
   const searchQuery = useState("");
-  const colorSets = useColorSets();
   const options = colorSets.getOptions();
   const numPans = useState(12);
   const paletteName = useState(id !== "new" ? paletteToEdit.name : "");
   const selectedPan = useState(-1);
   const selectedSet = useState(options[0]);
+  const colorList = useState([...colorSets.find("")]);
   const paletteColors = useState(
     id !== "new"
       ? paletteToEdit.colors.map((color) => ({ ...color }))
       : new Array(numPans.get()).fill(null)
   );
-
-  const selectedColorSet =
-    selectedSet.get().value !== undefined
-      ? colorSets.get(selectedSet.get().value)
-      : [];
 
   function handleColorClick(color) {
     if (selectedPan.get() === -1) return;
@@ -87,7 +83,14 @@ export default function EditPalette({ onAdd }) {
   });
 
   function handleSearch() {
-    console.log("searching", searchQuery.get());
+    const results = colorSets.find(searchQuery.get());
+    colorList.set([...results]);
+  }
+
+  function handleSelect(v) {
+    selectedSet.set(v);
+    colorSets.setCurrent(v);
+    colorList.set([...colorSets.get(v.value)]);
   }
 
   return (
@@ -127,10 +130,7 @@ export default function EditPalette({ onAdd }) {
                 placeholder="Search..."
                 onInputEnd={handleSearch}
               />
-              <Dropdown
-                options={options}
-                onChange={(v) => selectedSet.set(v)}
-              />
+              <Dropdown options={options} onChange={handleSelect} />
             </div>
             <div className="edit-palette__button-container">
               <button className="edit-palette__button" onClick={handleClear}>
@@ -144,7 +144,7 @@ export default function EditPalette({ onAdd }) {
         </div>
       </div>
       <div className="edit-palette__panel">
-        <ColorList colors={selectedColorSet} onColorClick={handleColorClick} />
+        <ColorList colors={colorList.get()} onColorClick={handleColorClick} />
       </div>
     </div>
   );

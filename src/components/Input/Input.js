@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 import { ReactComponent as EditIcon } from "../../assets/icons/noun_edit_1954019.svg";
 import "./Input.css";
 import debounce from "../../lib/debounce";

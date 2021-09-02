@@ -100,6 +100,7 @@ const globalState = createState({
   ],
   currentTrayIdx: -1,
   trays: [],
+  currentSet: "",
   colors: getColorSets(),
   header: {
     isButtonVisible: false,
