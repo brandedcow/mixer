@@ -1,8 +1,17 @@
-import { useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { ReactComponent as EditIcon } from "../../assets/icons/noun_edit_1954019.svg";
 import "./Input.css";
+import debounce from "../../lib/debounce";
 
-export default function Input({ value, onChange, placeholder, size, style }) {
+export default function Input({
+  icon,
+  value,
+  onChange,
+  placeholder,
+  size,
+  style,
+  onInputEnd,
+}) {
   const inputEl = useRef(null);
 
   function handleEditClick() {
@@ -15,13 +24,21 @@ export default function Input({ value, onChange, placeholder, size, style }) {
     }
   }
 
+  const handleKeyUp = (e) => {
+    onInputEnd();
+  };
+
+  const debouncedHandleKeyUp = useMemo(() => debounce(handleKeyUp, 500), []);
+
   return (
     <div className="input__container" style={{ ...style }}>
-      <EditIcon
-        height={size || "3rem"}
-        width={size || "3rem"}
-        onClick={handleEditClick}
-      />
+      {icon && (
+        <EditIcon
+          height={size || "3rem"}
+          width={size || "3rem"}
+          onClick={handleEditClick}
+        />
+      )}
 
       <input
         style={{
@@ -32,6 +49,7 @@ export default function Input({ value, onChange, placeholder, size, style }) {
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
+        onKeyUp={debouncedHandleKeyUp}
       />
     </div>
   );

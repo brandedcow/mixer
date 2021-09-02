@@ -18,6 +18,7 @@ export default function EditPalette({ onAdd }) {
   const { id } = useParams();
   const paletteToEdit = palettes.getPalette(id);
 
+  const searchQuery = useState("");
   const colorSets = useColorSets();
   const options = colorSets.getOptions();
   const numPans = useState(12);
@@ -63,6 +64,7 @@ export default function EditPalette({ onAdd }) {
 
   function handleSave() {
     // TODO: Add VALIDATION
+    // TODO: Add different function for edit
     if (paletteName === "") return;
 
     const palette = {
@@ -84,6 +86,10 @@ export default function EditPalette({ onAdd }) {
     return headerButton.reset;
   });
 
+  function handleSearch() {
+    console.log("searching", searchQuery.get());
+  }
+
   return (
     <div className="edit-palette">
       <div className="edit-palette__panel">
@@ -91,6 +97,7 @@ export default function EditPalette({ onAdd }) {
           value={paletteName.get()}
           placeholder="Palette Name"
           onChange={(v) => paletteName.set(v)}
+          icon
           size="2rem"
         />
         <div className="edit-palette__panel-section">
@@ -113,6 +120,13 @@ export default function EditPalette({ onAdd }) {
               onDrop={handleSliderDrop}
             />
             <div className="edit-palette__color-options">
+              <Input
+                size="1rem"
+                value={searchQuery.get()}
+                onChange={(v) => searchQuery.set(v)}
+                placeholder="Search..."
+                onInputEnd={handleSearch}
+              />
               <Dropdown
                 options={options}
                 onChange={(v) => selectedSet.set(v)}
