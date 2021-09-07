@@ -4,6 +4,7 @@ import globalState from "./global";
 const wrapState = (s) => ({
   get: () => s.currentTrayIdx.value,
   set: (idx) => s.currentTrayIdx.set(idx),
+  setLast: () => s.currentTrayIdx.set(s.trays.value.length - 1),
   reset: () => s.currentTrayIdx.set(-1),
   addColor: (newColor) => {
     const currentTray = s.trays[s.currentTrayIdx.value];

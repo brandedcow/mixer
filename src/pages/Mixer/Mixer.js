@@ -16,12 +16,17 @@ export default function Mixer() {
     currentTray.addColor(color);
   }
 
+  function handleAddPanClick() {
+    trayList.add();
+    currentTray.setLast();
+  }
+
   return (
     <div className="mixer">
       <TrayList
         trays={trayList.get()}
         onSelectTray={currentTray.set}
-        onAddTray={trayList.add}
+        onAddTray={handleAddPanClick}
         onDeleteTray={trayList.remove}
         selectedTray={currentTray.get()}
       />
