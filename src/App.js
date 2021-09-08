@@ -14,7 +14,10 @@ function App() {
         <Header title="Mixer" />
         <div className="app__content">
           <Switch>
-            <Route path="/mixer" exact>
+            <Route path="/">
+              <Mixer />
+            </Route>
+            <Route path="/mixer">
               <Mixer />
             </Route>
             <Route path="/colors">

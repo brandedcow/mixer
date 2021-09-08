@@ -1,5 +1,6 @@
-import TraySample from './TraySample'
-import './MaximizedTray.css'
+import TraySample from "./TraySample";
+import "./MaximizedTray.css";
+import { useParams } from "react-router-dom";
 
 export default function MaximizedTray({
   hex,
@@ -8,33 +9,18 @@ export default function MaximizedTray({
   onDelete,
   maxSize: size,
 }) {
+  const { id } = useParams();
+
+  console.log("rendered max", id);
   return (
-    <div 
+    <div
       className="max-tray"
       style={{
-        width: `${size}px`,
-        height: `${size}px`,
+        width: `300px`,
+        height: `300px`,
       }}
     >
-      <div className="max-tray__frame">
-        <div className="max-tray__controls">
-
-        </div>
-        <div className="max-tray__content">
-
-        </div>
-        <div className="max-tray__samples">
-          {colors.map(({name, hex: sampleHex, weight }, idx)=> (
-            <TraySample
-              key={`tray-${trayIdx}-color-${idx}`}
-              name={name}
-              hex={sampleHex}
-              idx={idx}
-              weight={weight}
-            />
-          ))}
-        </div>
-      </div>
+      Max Tray
     </div>
-  )
+  );
 }

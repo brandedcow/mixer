@@ -17,11 +17,8 @@ export default function Tray({
   const currentTrayState = useCurrentTrayState();
   const color = mixColors(...colors)?.hex || "FFFFFF";
 
-  function handleExpandClick() {
-    onSelect();
-  }
+  function handleExpandClick() {}
 
-  // const renderedComponent = isExpanded ? MaximizedTray : MinimizedTray
   const renderedComponent = MinimizedTray;
 
   const isSelected = currentTrayState.get() === idx;

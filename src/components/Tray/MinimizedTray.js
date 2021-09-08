@@ -12,7 +12,6 @@ export default function MinimizedTray({
   colors,
   onExpand,
   onDelete,
-  onSelect,
   minSize: size,
   isSelected,
 
