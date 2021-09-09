@@ -26,6 +26,27 @@ const wrapState = (s) => ({
     }
   },
   removeColor: (idx) => s.trays[s.currentTrayIdx.value][idx].set(none),
+  incIdx: (idx) => {
+    console.log("inc");
+    const currentTray = s.trays[s.currentTrayIdx.value];
+    currentTray[idx].set((c) => ({
+      ...c,
+      weight: c.weight + 1,
+    }));
+  },
+  decIdx: (idx) => {
+    const currentTray = s.trays[s.currentTrayIdx.value];
+    console.log(currentTray[idx].value);
+    if (currentTray[idx].value.weight - 1 === 0) {
+      // currentTray[idx].set(none);
+      return;
+    } else {
+      currentTray[idx].set((c) => ({
+        ...c,
+        weight: c.weight - 1,
+      }));
+    }
+  },
 });
 
 const useCurrentTray = () => wrapState(useState(globalState));

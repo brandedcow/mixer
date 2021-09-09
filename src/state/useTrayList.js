@@ -4,6 +4,7 @@ import globalState from "./global";
 
 const wrapState = (s) => ({
   get: () => s.trays.value,
+  getOne: (idx) => (s.trays.value[idx] ? s.trays.value[idx] : []),
   add: () => s.trays.merge([[]]),
   remove: (idx) => s.trays[idx].set(none),
 });

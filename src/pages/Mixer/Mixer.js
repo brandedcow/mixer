@@ -5,12 +5,14 @@ import usePaletteState from "../../state/usePaletteState";
 import useCurrentTray from "../../state/useCurrentTray";
 import "./Mixer.css";
 import useTrayListState from "../../state/useTrayList";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
+import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
 
 export default function Mixer() {
   const paletteState = usePaletteState();
   const currentTray = useCurrentTray();
   const trayList = useTrayListState();
+  const history = useHistory();
+  const { path, url } = useRouteMatch();
 
   const { colors } = paletteState.getCurrentPalette();
 
@@ -23,11 +25,13 @@ export default function Mixer() {
     currentTray.setLast();
   }
 
-  const { path } = useRouteMatch();
+  function handleExpandPan(idx) {
+    history.push(`${url}/edit/${idx}`);
+  }
 
   return (
     <div className="mixer">
-      <div>
+      <div className="mixer__tray-container">
         <Switch>
           <Route exact path={path}>
             <TrayList
@@ -35,6 +39,7 @@ export default function Mixer() {
               onSelectTray={currentTray.set}
               onAddTray={handleAddPanClick}
               onDeleteTray={trayList.remove}
+              onExpandTray={handleExpandPan}
               selectedTray={currentTray.get()}
             />
           </Route>

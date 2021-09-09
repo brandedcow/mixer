@@ -8,6 +8,7 @@ export default function TrayList({
   onSelectTray,
   onAddTray,
   onDeleteTray,
+  onExpandTray,
   selectedTray,
 }) {
   const numCol = Math.floor((useWindowSize().width - 280) / 350);
@@ -27,6 +28,7 @@ export default function TrayList({
           colors={tray}
           onDelete={() => onDeleteTray(idx)}
           onClick={() => onSelectTray(idx)}
+          onExpand={() => onExpandTray(idx)}
         />
       ))}
     </div>

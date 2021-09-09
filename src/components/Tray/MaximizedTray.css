@@ -1,23 +1,45 @@
 .max-tray {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
 
-  z-index: 10;
+  height: 600px;
+  width: 600px;
+
   background: white;
 
-  border: 1px solid #9B9B9B;
+  border: 15px solid #f3f3f3;
   border-radius: 30px;
+  padding: 15px;
 }
 
 .max-tray__frame {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  flex: 1;
+  border-radius: 15px;
+}
+
+.max-tray__samples {
+  display: flex;
+
   width: 100%;
+  height: 150px;
+}
 
-  border: 8px solid #DADADA;
-  border-radius: 30px;
+.max-tray__sample:first-child {
+  border-bottom-left-radius: 15px;
+}
+.max-tray__sample:last-child {
+  border-bottom-right-radius: 15px;
+}
 
-  transition: border 0.15s ease-out;
+.max-tray__pan {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "lucida-console";
+  font-size: 40px;
 }

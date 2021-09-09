@@ -6,7 +6,7 @@ import useCurrentTrayState from "../../state/useCurrentTray";
 export default function Tray({
   idx,
   colors,
-  onSelect,
+  onExpand,
   onDelete,
   minSize,
   maxSize,
@@ -16,8 +16,6 @@ export default function Tray({
 }) {
   const currentTrayState = useCurrentTrayState();
   const color = mixColors(...colors)?.hex || "FFFFFF";
-
-  function handleExpandClick() {}
 
   const renderedComponent = MinimizedTray;
 
@@ -31,7 +29,7 @@ export default function Tray({
         minSize,
         maxSize,
         isSelected,
-        onExpand: handleExpandClick,
+        onExpand,
         onDelete,
 
         onClick,
